@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
+//import android.view.MotionEvent;
+
 
 import com.sketchView.utils.ToolUtils;
 
@@ -12,8 +14,8 @@ import com.sketchView.utils.ToolUtils;
  */
 public class PenSketchTool extends PathTrackingSketchTool implements ToolThickness, ToolColor {
 
-    private static final float DEFAULT_THICKNESS = 5;
-    private static final int DEFAULT_COLOR = Color.BLACK;
+    private static final float DEFAULT_THICKNESS = 2;
+    private static final int DEFAULT_COLOR = 0xff000f77; // BLACK
 
     private float toolThickness;
     private int toolColor;
@@ -58,4 +60,11 @@ public class PenSketchTool extends PathTrackingSketchTool implements ToolThickne
     public int getToolColor() {
         return toolColor;
     }
+
+    //@Override
+    //void onTouchMove(MotionEvent event) {
+    //    float pressure = event.getPressure();
+    //    paint.setAlpha(Math.min((int)(pressure * 128), 255));
+    //    super.onTouchMove(event);
+    //}
 }

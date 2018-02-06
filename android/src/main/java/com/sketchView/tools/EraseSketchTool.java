@@ -13,7 +13,7 @@ import com.sketchView.utils.ToolUtils;
  */
 public class EraseSketchTool extends PathTrackingSketchTool implements ToolThickness {
 
-    private static final float DEFAULT_THICKNESS = 10;
+    private static final float DEFAULT_THICKNESS = 20;
 
     private Paint paint = new Paint();
 

@@ -14,9 +14,11 @@ public abstract class SketchTool implements View.OnTouchListener {
     public static final int TYPE_ERASE = 1;
 
     View touchView;
+    boolean useStylus;
 
     SketchTool(View touchView) {
         this.touchView = touchView;
+        this.useStylus = true;
     }
 
     public abstract void render(Canvas canvas);
@@ -26,19 +28,24 @@ public abstract class SketchTool implements View.OnTouchListener {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         int action = event.getAction();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                onTouchDown(event);
-                break;
-            case MotionEvent.ACTION_MOVE:
-                onTouchMove(event);
-                break;
-            case MotionEvent.ACTION_UP:
-                onTouchUp(event);
-                break;
-            case MotionEvent.ACTION_CANCEL:
-                onTouchCancel(event);
-                break;
+        // *** RFD: added check for stylus
+        // *** TODO: use getPressure to make color darker with more pressure.
+        // http://tool.oschina.net/uploads/apidocs/android/resources/samples/ApiDemos/src/com/example/android/apis/graphics/TouchPaint.html
+        if(!this.useStylus || (event.getToolType(0)==event.TOOL_TYPE_STYLUS)) {
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    onTouchDown(event);
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    onTouchMove(event);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    onTouchUp(event);
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    onTouchCancel(event);
+                    break;
+            }
         }
         return true;
     }

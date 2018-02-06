@@ -1,11 +1,11 @@
-
-import React, { PropTypes, Component } from 'react';
-import { 
-  requireNativeComponent, 
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import {
+  requireNativeComponent,
   View,
   UIManager,
   findNodeHandle,
-  DeviceEventEmitter 
+  DeviceEventEmitter
 } from 'react-native';
 
 class SketchView extends Component {
@@ -102,3 +102,4 @@ let RNSketchView = requireNativeComponent('RNSketchView', SketchView, {
 });
 
 export default SketchView;
+
